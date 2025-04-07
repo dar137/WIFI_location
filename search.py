@@ -20,23 +20,8 @@ def wifi_scan():
                 "signal":network.signal,
             })
     return BUPT_networks
-    # fingerprint = {
-    #     "data": "BUPT_networks",
-    #     "timestamp": time.time()
-    # }
-    # return fingerprint
 
 def main():
-    # now = datetime.datetime.now()
-    # BUPT_wifi = "BUPT_networks.json"
-    # data_list = []
-    # while True:
-    #     networks = wifi_scan()
-    #     data_list.append(networks)
-    #     with open(BUPT_wifi, "w", encoding="utf-8") as file:
-    #         json.dump(data_list, file, ensure_ascii=False, indent=4)
-    #         time.sleep(2)
-    
     all_networks = []
     while True:
         networks = wifi_scan()
@@ -48,8 +33,6 @@ def main():
         for net in networks:
             print(f"SSID:{net["ssid"]}, BSSID:{net["bssid"]}, 信号强度:{net["signal"]}")
         time.sleep(2)
-        # else:
-        #     # print("没有发现校园网络")
 
 if __name__ == '__main__':
    main()
