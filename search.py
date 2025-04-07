@@ -13,10 +13,14 @@ def wifi_scan():
     time.sleep(2)
     results = iface.scan_results()
     BUPT_networks = []
+    x=input("请输入横坐标：")
+    y=input("请输入纵坐标：")
+    location = [x,y]
     for network in results:
         ssid = network.ssid
         if ssid.startswith("BUPT"):
             BUPT_networks.append({
+                "location": location,
                 "timestamp": now.strftime("%Y-%m-%d %H:%M:%S"),
                 "ssid": ssid,
                 "bssid":network.bssid,
@@ -26,7 +30,7 @@ def wifi_scan():
 
 def main():
     all_networks = []
-    BUPT_wifi = "BUPT_networks1.json"
+    BUPT_wifi = "BUPT_networks.json"
     while True:
         networks = wifi_scan()
         all_networks.append(networks)
